@@ -139,7 +139,7 @@
             statusbox.Location = new Point(99, 147);
             statusbox.Name = "statusbox";
             statusbox.Size = new Size(542, 33);
-            statusbox.TabIndex = 3;
+            statusbox.TabIndex = 4;
             // 
             // IDtextBox
             // 
@@ -147,7 +147,7 @@
             IDtextBox.Location = new Point(99, 183);
             IDtextBox.Name = "IDtextBox";
             IDtextBox.Size = new Size(542, 31);
-            IDtextBox.TabIndex = 4;
+            IDtextBox.TabIndex = 5;
             // 
             // btnName
             // 
@@ -155,7 +155,7 @@
             btnName.Location = new Point(3, 3);
             btnName.Name = "btnName";
             btnName.Size = new Size(90, 30);
-            btnName.TabIndex = 5;
+            btnName.TabIndex = 6;
             btnName.Text = "Name";
             btnName.UseVisualStyleBackColor = true;
             // 
@@ -165,7 +165,7 @@
             btnCategory.Location = new Point(3, 39);
             btnCategory.Name = "btnCategory";
             btnCategory.Size = new Size(90, 30);
-            btnCategory.TabIndex = 6;
+            btnCategory.TabIndex = 7;
             btnCategory.Text = "Category";
             btnCategory.UseVisualStyleBackColor = true;
             // 
@@ -175,7 +175,7 @@
             BtnPrice.Location = new Point(3, 75);
             BtnPrice.Name = "BtnPrice";
             BtnPrice.Size = new Size(90, 30);
-            BtnPrice.TabIndex = 7;
+            BtnPrice.TabIndex = 8;
             BtnPrice.Text = "Price";
             BtnPrice.UseVisualStyleBackColor = true;
             // 
@@ -185,7 +185,7 @@
             BtnStock.Location = new Point(3, 111);
             BtnStock.Name = "BtnStock";
             BtnStock.Size = new Size(90, 30);
-            BtnStock.TabIndex = 8;
+            BtnStock.TabIndex = 9;
             BtnStock.Text = "Stock";
             BtnStock.UseVisualStyleBackColor = true;
             // 
@@ -195,7 +195,7 @@
             BtnStatue.Location = new Point(3, 147);
             BtnStatue.Name = "BtnStatue";
             BtnStatue.Size = new Size(90, 30);
-            BtnStatue.TabIndex = 9;
+            BtnStatue.TabIndex = 10;
             BtnStatue.Text = "Status";
             BtnStatue.UseVisualStyleBackColor = true;
             // 
@@ -205,7 +205,7 @@
             BtnId.Location = new Point(3, 183);
             BtnId.Name = "BtnId";
             BtnId.Size = new Size(90, 35);
-            BtnId.TabIndex = 10;
+            BtnId.TabIndex = 11;
             BtnId.Text = "ID";
             BtnId.UseVisualStyleBackColor = true;
             // 
@@ -215,7 +215,7 @@
             StockUpDown.Location = new Point(99, 111);
             StockUpDown.Name = "StockUpDown";
             StockUpDown.Size = new Size(542, 31);
-            StockUpDown.TabIndex = 11;
+            StockUpDown.TabIndex = 3;
             // 
             // ProductForm
             // 
