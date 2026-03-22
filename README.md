@@ -1,6 +1,6 @@
 # MiniStore BcakOffice
 
-##Windows Application-Layered
+## Windows Application-Layered
 
-###App.core
-###App.WindowsApp
+### App.core
+### App.WindowsApp
