@@ -1,3 +1,3 @@
 # MiniStore BcakOffice
 
-##Windows Application-Layred
+##Windows Application-Layered
