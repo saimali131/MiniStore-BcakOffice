@@ -4,6 +4,7 @@ using App.Core.Utilities;
 using App.Core.Contracts;
 using App.WindowsApp.Views;
 using App.Core.Models;
+using System.Drawing.Text;
 
 namespace App.WindowsApp.Views
 {
@@ -23,13 +24,22 @@ namespace App.WindowsApp.Views
         private void ProductView_Load(object sender, EventArgs e)
         {
             CmbCategory.Items.Clear();
-            CmbCategory.Items.Add("---All---");
-            CmbCategory.Items.AddRange(Enum.GetNames(typeof(ProductCategoreyEnum)));
+            var categoires =new List<object> { "---All---"};
+            categoires.AddRange(Enum.GetValues(typeof(ProductCategoreyEnum)).Cast<object>());
+            CmbCategory.DataSource = categoires;
             CmbCategory.SelectedIndex = 0;
+
+
             cmbStock.Items.Clear();
-            cmbStock.Items.Add("---All----");
-            cmbStock.Items.AddRange(Enum.GetNames(typeof(ProductStatusEnum)));
+            var stockStatuses = new List<object> { "---All---" };
+            stockStatuses.AddRange(Enum.GetValues(typeof(ProductStatusEnum)).Cast<object>());
+            cmbStock.DataSource = stockStatuses;
             cmbStock.SelectedIndex = 0;
+
+            if (_service == null)
+                return;
+            _dgvBindingSource.DataSource = _service.GetAll();
+
         }
 
         //private void LblSearch_TextChanged(object sender, EventArgs e)
@@ -38,8 +48,9 @@ namespace App.WindowsApp.Views
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            ProductForm prodForm = new ProductForm(Forms.ProductFormEnumMode.Add, null);
+            ProductForm prodForm = new ProductForm(Forms.ProductFormEnumMode.Add, null, _service);
             prodForm.ShowDialog();
+            RefreshGrid();
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -48,8 +59,9 @@ namespace App.WindowsApp.Views
             Product? Selectedproducts = _dgvBindingSource.Current as Product;
             if (Selectedproducts != null)
             {
-                ProductForm prodForm = new ProductForm(Forms.ProductFormEnumMode.Edit, Selectedproducts);
+                ProductForm prodForm = new ProductForm(Forms.ProductFormEnumMode.Edit, Selectedproducts, _service);
                 prodForm.ShowDialog();
+                RefreshGrid();
             }
         }
 
@@ -58,9 +70,62 @@ namespace App.WindowsApp.Views
             Product? Selectedproducts = _dgvBindingSource.Current as Product;
             if (Selectedproducts != null)
             {
-                ProductForm prodForm = new ProductForm(Forms.ProductFormEnumMode.View, Selectedproducts);
+                ProductForm prodForm = new ProductForm(Forms.ProductFormEnumMode.View, Selectedproducts, _service);
                 prodForm.ShowDialog();
+                RefreshGrid();
             }
+
+        }
+        private void RefreshGrid()
+        {
+
+            string SearchText = LblSearch.Text;
+            ProductCategoreyEnum? SelectedCategory = null;
+            if (CmbCategory.SelectedItem != null)
+            {
+                if (CmbCategory.SelectedItem.ToString().Equals ("---All---"))
+                {
+                    SelectedCategory = null;
+                }
+                else
+                {
+                    SelectedCategory =  (ProductCategoreyEnum)CmbCategory.SelectedItem;
+                }
+            }
+
+            ProductStatusEnum? SelectedStatus = null;
+            if (cmbStock.SelectedItem != null)
+            {
+                if (cmbStock.SelectedItem.ToString().Equals("---All---"))
+                {
+                    SelectedStatus = null;
+                }
+                else
+                {
+                    SelectedStatus = (ProductStatusEnum)cmbStock.SelectedItem;
+                }
+            }
+
+
+            _dgvBindingSource.DataSource = _service.Search(SearchText, SelectedCategory, SelectedStatus); 
+
+            
+        }
+
+        private void LblSearch_TextChanged(object sender, EventArgs e)
+        {
+            RefreshGrid();
+        }
+        
+        private void CmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshGrid(); 
+        }
+
+       
+        private void cmbStock_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshGrid();  
         }
     }
 }

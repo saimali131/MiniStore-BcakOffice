@@ -6,7 +6,7 @@ namespace App.Core.Utilities
 {
     public enum ProductCategoreyEnum
     {
-        name,
+        none,
         Electronics,
         Stationary,
         Cleaning,

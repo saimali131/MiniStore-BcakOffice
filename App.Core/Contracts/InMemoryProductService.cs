@@ -22,21 +22,42 @@ namespace App.core.Services
         }
         public Product Add(Product product)
         {
-            throw new NotImplementedException();
+            if (product != null)
+            {
+                product.ID = GenerateId();
+                _products.Add(product);
+            }
+            return product;
         }
         public bool Update(Product product)
         {
+            if (product != null)
+            {
+                Product? existingProduct = _products.Find(p => p.ID == product.ID);
+                if (existingProduct == null) return false;
+
+                existingProduct.Name = product.Name;
+                existingProduct.Category = product.Category;
+                existingProduct.Price = product.Price;
+                existingProduct.Stock = product.Stock;
+                existingProduct.Status = product.Status;
+
+                return true;
+            }
             return false;
         }
         public bool Delete(string id)
         {
-            return false;
+            Product productToDelete = GetById(id);
+            _products.Remove(productToDelete);
+            return true;
         }
 
         public Product GetById(string id)
 
         {
-            throw new NotImplementedException();
+            Product? IDProduct = _products.Find(p => p.ID == id);
+            return IDProduct;
         }
 
         public List<Product> GetAll()
@@ -46,7 +67,18 @@ namespace App.core.Services
 
         public List<Product> Search(string text, ProductCategoreyEnum? Categorey, ProductStatusEnum? Status)
         {
-            throw new NotImplementedException();
+            List<Product> _filtered = _products.ToList();
+            _filtered= _filtered.Where(p => p.Name.Contains(text) ).ToList();
+                if (Status != null)
+                {
+                    _filtered = _filtered.Where(p => p.Status == Status).ToList();
+            }
+
+            if (Categorey != null)
+            {
+                _filtered = _filtered.Where(p => p.Category == Categorey).ToList();
+            }
+            return _filtered;
         }
         public void GenerateFakeProducts()
         {

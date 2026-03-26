@@ -2,15 +2,8 @@
 {
     partial class ProductView
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
@@ -76,7 +65,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 56F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 84F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(802, 547);
+            tableLayoutPanel1.Size = new Size(802, 490);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // toolStrip1
@@ -174,6 +163,7 @@
             CmbCategory.Name = "CmbCategory";
             CmbCategory.Size = new Size(221, 33);
             CmbCategory.TabIndex = 1;
+            CmbCategory.SelectedIndexChanged += new System.EventHandler(this.CmbCategory_SelectedIndexChanged); 
             // 
             // cmbStock
             // 
@@ -184,6 +174,7 @@
             cmbStock.Name = "cmbStock";
             cmbStock.Size = new Size(223, 33);
             cmbStock.TabIndex = 2;
+            cmbStock.SelectedIndexChanged += new System.EventHandler(this.cmbStock_SelectedIndexChanged);  
             // 
             // label1
             // 
@@ -225,6 +216,7 @@
             LblSearch.Name = "LblSearch";
             LblSearch.Size = new Size(296, 31);
             LblSearch.TabIndex = 0;
+            LblSearch.TextChanged += LblSearch_TextChanged;
             // 
             // PnlDrid
             // 
@@ -234,7 +226,7 @@
             PnlDrid.Margin = new Padding(2, 3, 2, 3);
             PnlDrid.Name = "PnlDrid";
             PnlDrid.Padding = new Padding(10, 12, 10, 12);
-            PnlDrid.Size = new Size(771, 369);
+            PnlDrid.Size = new Size(771, 312);
             PnlDrid.TabIndex = 2;
             // 
             // dataGridViewproducts
@@ -252,7 +244,7 @@
             dataGridViewproducts.RowHeadersVisible = false;
             dataGridViewproducts.RowHeadersWidth = 82;
             dataGridViewproducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewproducts.Size = new Size(751, 345);
+            dataGridViewproducts.Size = new Size(751, 288);
             dataGridViewproducts.TabIndex = 0;
             // 
             // colid
@@ -316,7 +308,7 @@
             Controls.Add(tableLayoutPanel1);
             Margin = new Padding(2, 3, 2, 3);
             Name = "ProductView";
-            Size = new Size(808, 539);
+            Size = new Size(808, 473);
             Load += ProductView_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -327,7 +319,6 @@
             PnlDrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewproducts).EndInit();
             ResumeLayout(false);
-
         }
 
         #endregion
